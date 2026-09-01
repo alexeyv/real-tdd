@@ -97,11 +97,12 @@ judge of the first item.
 
 ## Status
 
-Three runs of the same Mars Rover task, all in `runs/`. The first has a
+Four runs of the same Mars Rover task, all in `runs/`. The first has a
 bmad-build control and used the skill text at tag `run-1`. The second and
 third ran on successive revisions of the skill and carry the exact text
-they used in `skill-as-run/`. Each run directory has a README with the
-numbers, the token usage, and what the run showed.
+they used in `skill-as-run/`. The fourth reran the third's text on Fable
+5.1 at medium effort. Each run directory has a README with the numbers,
+the token usage, and what the run showed.
 
 ## License
 

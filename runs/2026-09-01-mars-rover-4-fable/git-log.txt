@@ -1,0 +1,29 @@
+fb63c54 test(rover): regression tests for behaviour the list still named
+3b32a13 feat(rover): R cycles through all four headings
+9c63a80 feat(rover): L cycles through all four headings
+e8600e4 feat(rover): L facing west turns to face south
+5fddb23 feat(rover): report the known obstacle a refused command string would hit
+2e98644 feat(rover): refuse commands that would hit a known obstacle
+4c1f3e4 feat(rover): bumping a known obstacle again does not record it twice
+d5a0d78 feat(rover): remember each obstacle the rover bumps into
+6896414 feat(rover): a new rover has discovered no obstacles
+a9b6465 feat(rover): moving south off the south pole row crosses the pole
+ba2619b feat(rover): backing over the north pole flips longitude and heading
+cc18eb6 feat(rover): moving north off the north pole row crosses the pole
+2ad68e9 feat(rover): each command string starts with a clear obstacle report
+97a9f9d feat(rover): report no obstacle when nothing stopped the rover
+7fdb0fd feat(rover): report the obstacle that stopped the rover
+724615e feat(rover): hitting an obstacle abandons the rest of the commands
+bdf971e feat(rover): a move into an obstacle leaves the rover in place
+30068fa feat(rover): R facing north turns to face east
+d58031d feat(rover): B moves one square opposite the heading
+35edf5a feat(rover): F facing west moves one column west
+5c3e121 feat(rover): longitude wraps east off the last column
+8e50f35 feat(rover): commands in a string execute in order
+422e749 feat(rover): L facing north turns to face west
+bf38267 feat(rover): F facing south moves one row south
+29baab2 feat(rover): F moves in the direction of the heading
+9668f94 feat(rover): F facing north moves one row north
+97b28ad feat(rover): new rover reports its position and heading
+34f86a2 chore: pytest scaffolding so a test file can run
+6264d56 chore: set up fourth real-tdd run for Mars Rover
