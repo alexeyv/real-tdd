@@ -1,0 +1,2 @@
+cdfe805 chore: add task spec, agent instructions, and gitignore
+cce60ee feat(rover): mars rover with spherical poles and obstacle learning
