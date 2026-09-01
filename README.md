@@ -79,12 +79,18 @@ judge of the first item.
 ## What is in here
 
 - `skills/real-tdd/SKILL.md`: the protocol.
+- `skills/real-tdd/references/glossary.md`: the terms the protocol uses,
+  one meaning for both sessions.
 - `skills/real-tdd/references/beck.md`: what Beck wrote, with sources, so
   the skill can be checked against the technique it claims to run.
+- `runs/`: one directory per run, with the ping-pong artifacts, the
+  control, and a comparison.
 
 ## Status
 
-No runs yet. Results, when there are any, go in `runs/`.
+One run: `runs/2026-09-01-mars-rover/`. The skill was revised after it to
+fix the failure modes that run exposed; the run was made with the earlier
+text, which is in git history at tag `run-1`.
 
 ## License
 

@@ -1,48 +1,22 @@
 ---
 name: real-tdd
-description: Kent Beck's test-driven development, as he wrote it, run as ping-pong pairing between two isolated Claude Code sessions sharing one working tree. Use when the user says /real-tdd, "real TDD", or "ping-pong TDD". Requires a partner session; never simulate the partner.
+description: Kent Beck's test-driven development as he wrote it, run as ping-pong pairing between two Claude Code sessions sharing one working tree. Use when the user says /real-tdd, "real TDD", or "ping-pong TDD". Requires a partner session; never simulate the partner.
 ---
 
 # Real TDD
 
-## Statement of intent
+## Intent
 
-This is an honest experiment, not a parody.
+An experiment, not a recommendation. Beck's TDD is a design technique:
+write one failing test, make it pass by the cheapest means, remove the
+duplication that created, repeat. It depends on the test's author not yet
+knowing the implementation. One model context cannot provide that; two can.
+So the technique runs across two sessions that share a working tree and
+nothing else. The journal is the data, and nothing here assumes what it
+will show.
 
-Test-driven development as Kent Beck described it is a design technique
-with a specific rhythm: write one small failing test, make it pass by the
-cheapest means available, remove the duplication that the cheap means
-created, repeat. The claim is that the sequence of tests, each one written
-before you know how you will pass it, shapes the interface, and that
-removing duplication shapes the implementation. The claim is not that you
-end up with tests.
-
-Most "TDD for agents" skills keep the vocabulary and drop the mechanism.
-They hand the agent a test and the implementation in the same plan, or
-have one context write both in the same breath. A test cannot push back on
-a design that was decided four seconds earlier by the same mind.
-
-The one thing that made the technique work for humans, that the author of
-the test does not yet know the implementation, is impossible inside a
-single language-model context and trivially available across two. So this
-skill runs the technique across two sessions that share a working tree and
-nothing else, in the ping-pong form of pair programming: one session writes
-a failing test, the other makes it pass and writes the next failing test,
-and the keyboard changes hands on every red.
-
-The question the experiment asks is whether, under those conditions, the
-tests drive anything. Whether the interface that emerges differs from what
-one session would have written from the task statement in a single pass.
-Whether the test list changes during the run, which would mean the
-sequence taught somebody something. What it costs. The journal each
-session keeps is the data. Nothing in this file assumes the answer.
-
-Everything below that is a rule comes from Beck's *Test-Driven
-Development: By Example* (2002) or his *Canon TDD* post (2023), with the
-source noted. The ping-pong handoff is an XP community practice, not from
-the book. See `references/beck.md` for the sources. Where this skill has to
-invent mechanics that Beck never needed, such as who holds the keyboard
-when the pair cannot see each other, it says so.
+Terms are defined in `references/glossary.md`. Read it first. Sources are
+in `references/beck.md`.
 
 ## Invocation
 
@@ -52,33 +26,29 @@ when the pair cannot see each other, it says so.
 /real-tdd pong                      # second session, joins the run
 ```
 
-Run both sessions in the same repository, in separate terminals. Start
-`ping` first. Your role for this run is the first word of `$ARGUMENTS`;
-the rest, if present, is the task statement.
+Both sessions run in the same repository in separate terminals. Start
+`ping` first. Your role is the first word of `$ARGUMENTS`; the rest, if
+present, is the task statement.
 
-If you were invoked and cannot find a partner (no second session will be
-started, or the human asks you to play both sides), stop and say so. Do
-not simulate the partner with a subagent, a fork, or your own reasoning.
-The experiment measures what happens when the test author does not know
-the implementation. One context playing both roles knows both, and the
-data would be worthless.
+If there is no partner session, stop and say so. Do not play both roles
+with a subagent, a fork, or your own reasoning. The run would measure
+nothing.
 
 ## Shared state
 
-All coordination lives in `.real-tdd/` in the repository root, and in the
-working tree itself. The sessions never read each other's transcripts.
-The working tree is the shared screen; the journal is the talking.
+Everything the sessions share is in the working tree and in `.real-tdd/`.
+Neither session reads the other's transcript.
 
 | File | Meaning |
 |------|---------|
-| `.real-tdd/task.md` | The task, in the human's words. Written once by `ping`. Read-only after. |
-| `.real-tdd/test-list.md` | Beck's test list. Behaviors to cover, as checkboxes. Either session may add items at any time. |
-| `.real-tdd/baton` | Whose keyboard it is: `ping`, `pong`, or `done`. |
-| `.real-tdd/journal.md` | One entry per turn, appended by whoever held the keyboard. The experiment's record. |
+| `.real-tdd/task.md` | The task in the human's words. Written once by `ping`. Not edited after. |
+| `.real-tdd/test-list.md` | The test list, as checkboxes. Either session may add items at any time. |
+| `.real-tdd/baton` | Whose turn it is: `ping`, `pong`, or `done`. |
+| `.real-tdd/journal.md` | One entry per turn, appended by the session that took the turn. |
 
 ## The turn
 
-Whoever's name is in the baton holds the keyboard. Everyone else waits.
+The session named in the baton acts. The other waits.
 
 ### Wait
 
@@ -86,165 +56,126 @@ Whoever's name is in the baton holds the keyboard. Everyone else waits.
 until [ "$(cat .real-tdd/baton 2>/dev/null)" = "<your role>" ]; do sleep 5; done
 ```
 
-If the tool times out, run it again. If the baton reads `done`, the run
-is over; read the final journal entry and stop.
+If the tool times out, run it again. If the baton reads `done`, read the
+last journal entry and stop.
 
 ### Receive
 
 1. Read the last journal entry, the test list, and `git status`.
-2. Run the whole test suite. Expect exactly one failing test: the one your
-   partner just wrote. It is uncommitted; the diff is your assignment.
-3. Read the failure. Beck's rhythm has you *see the new one fail*, and it
-   is your only information about what your partner wants. If it fails for
-   a reason that looks like a mistake in the test rather than a missing
-   behavior (a typo, a wrong import), fix the test only enough to make it
-   fail for the right reason, and say so in the journal. Do not change
-   what it asserts.
-4. If the failing test is one you wrote yourself, your partner handed it
-   back: the journal will say the step was too big or that the test
-   contradicts the task. Skip Green and Refactor. Your move is the Red
-   step: split the test into a smaller one (Beck's Child Test), rewrite
-   it, or withdraw it and pick another item. Then hand off again.
+2. Run the whole suite. Expect one failing test, uncommitted. The diff is
+   your assignment. If the diff is a whole new test file, your partner
+   forgot to commit it earlier; it goes into your commit.
+3. If the test fails for a reason that is a mistake in the test rather
+   than a missing behavior, fix the test only enough to make it fail for
+   the right reason, and say so in the journal. Do not change what it
+   asserts.
+4. If the test asserts something that contradicts `task.md`, say which
+   line of the task in the journal and hand the baton back without a green.
+5. If the failing test is one you wrote and your partner handed it back,
+   skip Green and Refactor. Split it (Child Test), rewrite it, or withdraw
+   it and pick another item. Then hand off.
 
 ### Green
 
-Make the failing test pass, and keep every other test passing. Beck gives
-three ways and says to choose by how confident you are (*TDD by Example*,
-Part III, Green Bar Patterns):
+Make the failing test pass and keep every other test passing, by Fake It,
+Obvious Implementation, or Triangulate. Choose by how sure you are. Do not
+write code no current test demands; put the need on the list instead.
 
-- **Fake It.** Return a constant. The constant duplicates the expected
-  value in the test. That duplication is what the refactor step removes,
-  and removing it is how the real implementation appears. Use this when
-  you are not sure.
-- **Obvious Implementation.** If the real code is obvious, type it. If the
-  bar goes red unexpectedly while you do, back off to Fake It and take
-  smaller steps. Step size is a dial, not a rule.
-- **Triangulate.** Generalize only when two or more tests demand it. Use
-  this when you genuinely do not see the abstraction; otherwise it is
-  slow.
+If your green also satisfies other list items, name them in the journal
+and check them off as "satisfied by <commit>, not driven". Do not leave
+them to be tested in a block at the end.
 
-Commit whatever sins are necessary to get to green. This is the step where
-Beck permits ugliness on purpose. Do not write code the current tests do
-not demand; if you see something that will be needed, add it to the test
-list and leave it there.
-
-If you cannot get to green in three attempts, revert to the last green
-state, write in the journal that the step was too big, and hand the baton
-back with the same test still red. Your partner's move is then to split
-it (Beck's Child Test) or replace it with a smaller one.
+After three failed attempts, revert to the last green commit, write in the
+journal that the step was too big, and hand the baton back with the test
+still red.
 
 ### Refactor
 
-Only on green. Remove duplication, including duplication between the test
-and the code you just wrote. Improve names. Do not add behavior. Run all
-tests after every change and stay green. This is where Beck says the
-implementation design happens, so do not skip it because the code is
-small.
+Only on green. Remove duplication, including between the test's expected
+value and the code. Improve names. Add no behavior. Run the whole suite
+after each change.
 
-When the tree is green and clean, commit it with a conventional-commit
-subject. Beck's Clean Check-in: never hand over a red suite except for the
-one test you write next.
+Commit when green and clean. The commit includes the test file. Use a
+conventional-commit subject.
 
 ### Red
 
-Now write the next failing test. This is the half that is interface
-design, so it has the most rules.
+Write the next failing test. Whoever writes the test decides the interface
+it calls; there is no other place that decision gets made, so record it
+in the journal when you make one.
 
-1. **Pick one item** from the test list. Beck's One Step Test: choose one
-   that will teach you something and that you are confident you can
-   implement. Early in a run, prefer the Starter Test, something trivial
-   that establishes where the code lives and how it is called. If the item
-   is too big, split it into smaller items on the list and pick the
-   smallest.
-2. **Assert First.** Write the assertion, then work backward to the setup
-   the assertion needs. Use literal, evident data. One behavior per test;
-   the test name says what it demonstrates.
-3. **Isolated Test.** The new test must not depend on any other test's
-   state or ordering.
-4. **Run the whole suite.** The new test must fail, and you must be able to
-   say why it failed. "It does not compile" is an acceptable red; Beck
-   says so explicitly. A new test that passes is not a step. Either you
-   are testing existing behavior, in which case delete it or keep it as a
-   Regression Test and pick a different item, or the previous green did
-   more than its test demanded.
-5. **Do not touch production code.** Not a stub, not a signature, not a
-   comment describing the intended implementation. If the test cannot even
-   reference the code under test, that is a compile-error red and it is
-   your partner's problem to resolve.
-6. **Do not write the test to an implementation.** Assert observable
-   behavior in the problem's vocabulary. You do not know how your partner
-   will pass it, and you are not supposed to.
-7. **Update the list.** Check off the item you just turned into a test.
-   Add anything you discovered. Beck writes the list at the start and
-   keeps adding to it as items appear; the list is the only place a
-   future behavior is allowed to live before its test exists.
+1. Pick one item from the list (One Step Test; Starter Test if nothing
+   exists yet). If it is too big, split it on the list and take the
+   smallest part.
+2. Assert First, with Evident Data. One behavior per test. The name says
+   what it demonstrates.
+3. Isolated Test.
+4. Run the whole suite. The new test must fail, and you must be able to
+   say why. Not compiling is a valid failure. If the new test passes,
+   either it records existing behavior, in which case keep it as a
+   Regression Test and pick another item, or the code is doing more than
+   its tests say. Check which before moving on; a passing new test has
+   found a bug this way.
+5. Do not touch production code. Not a stub, not a signature.
+6. Assert observable behavior in the problem's words, not an
+   implementation you have in mind.
+7. Check off the item. Add anything you discovered.
 
-If the list is empty when you come to pick an item, do not invent one.
-Beck's stopping rule is that you write tests until fear turns into
-boredom. Write `done` to the baton, make the final journal entry, and
-stop. The human decides whether the list was really finished.
+If the list is empty, write `done` to the baton, make the final journal
+entry, and stop. The human decides whether the list was finished.
 
 ### Hand off
 
-Append a journal entry (format below), then write your partner's role to
-the baton. Do it in that order; the baton flip is the only signal your
-partner gets. Then go back to Wait.
+Append the journal entry, then write your partner's role to the baton. In
+that order. Then Wait.
 
 ## The first turn
 
-The `ping` session starts the run and does less than a normal turn:
+`ping` only:
 
-1. If `$ARGUMENTS` carries a task statement, write it verbatim to
-   `.real-tdd/task.md`. Otherwise read the one that is there. If there is
-   none, ask the human.
-2. Write `.real-tdd/test-list.md`. This is Canon TDD step 1: a list of the
-   behaviors the finished code should exhibit, in the language of the
-   problem, not a list of steps and not a list of functions. Write it
-   before writing any test. Stop adding items when the remaining ones
-   bore you.
-3. If no test can run at all yet, add the minimum scaffold that lets one
-   test file execute: a test runner configuration, an empty package. No
-   production code.
-4. Do the Red step above, then hand off to `pong`.
+1. If `$ARGUMENTS` has a task statement, write it verbatim to
+   `.real-tdd/task.md`. Otherwise read the one there. If there is none,
+   ask the human.
+2. Write `.real-tdd/test-list.md`: the behaviors the finished code should
+   have, in the problem's words. Not steps, not functions.
+3. Read the task again, line by line, against the list. Every sentence of
+   the task that states a behavior has an item, and no item contradicts a
+   sentence. This list will be treated as binding by both sessions for the
+   rest of the run.
+4. If no test can run yet, add the minimum that lets one test file
+   execute. No production code.
+5. Commit the scaffold on its own, if there is one. Do the Red step,
+   leave the test uncommitted, and hand off to `pong`.
 
-The `pong` session starts at Wait.
+`pong` starts at Wait.
 
-## Rules that apply to both sessions all the time
+## Rules for both sessions
 
-- **No plan.** Do not write, in any file or in the journal, a description
-  of how the code will be structured. The structure is supposed to come
-  out of the tests and the refactoring. If you already know the structure,
-  the experiment is measuring whether the technique can get there without
-  you; let it try.
-- **The journal reports, it does not instruct.** Say what you did, which
-  green strategy you chose and why, what you refactored, what surprised
-  you, what you added to the list. Do not tell your partner what test to
-  write next or how to pass the one you wrote. The only instruction one
-  session may give the other is a test.
-- **Tests are the specification.** If a test you receive asserts something
-  that contradicts `task.md`, say so in the journal and hand the baton
-  back without a green. Do not silently pass a test you believe is wrong,
-  and do not silently change it.
-- **One test at a time.** Never two reds. Never a test and its
-  implementation in the same turn. If you notice you have written
-  production code while holding the Red step, delete it.
-- **Whole suite, every time.** Beck runs all the tests, not the new one.
-- **Small commits, only on green.** One commit per green-and-refactor.
-- **Never read the other session's transcript**, even if the human offers.
+- No plan. Do not write, anywhere, how the code will be structured.
+- The journal reports. It does not tell your partner what to write or how
+  to pass what you wrote. The only instruction between sessions is a test.
+- One test at a time. Never two reds. Never a test and its implementation
+  in the same turn.
+- Whole suite, every run.
+- One commit per green, and only on green.
+- Never read the other session's transcript.
 
 ## Journal entry format
 
+Take the timestamp from `date -u`; do not write it from memory.
+
 ```markdown
-## Turn N — <role> — <ISO timestamp>
+## Turn N — <role> — <output of date -u>
 
 **Received:** <test name> failing because <reason as observed>
 **Green by:** Fake It | Obvious Implementation | Triangulate — <one line on why>
 **Refactored:** <what duplication was removed, or "nothing">
 **Commit:** <hash>
+**Also satisfied:** <list items this green covered without a test, or "none">
 **Wrote:** <new test name> — fails because <observed reason>
+**Interface decided:** <any signature, type, or name this test fixed, or "none">
 **List:** <items checked, items added>
-**Surprise:** <anything the test or the code taught you, or "none">
+**Surprise:** <what the test or the code taught you, or "none">
 ```
 
-The Surprise line is the point of the experiment. Fill it honestly, and
-write "none" when there was none.
+The Surprise line is the point. Write "none" when there was none.
