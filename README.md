@@ -61,6 +61,11 @@ own; the baton is a file in `.real-tdd/`, and each session polls it.
 Everything the run produces is in the working tree: the code, the tests,
 one commit per green, and `.real-tdd/journal.md`.
 
+When a session finds the task ambiguous it writes `human` to the baton and
+a question in the journal, and both sessions wait. Answer by appending to
+`.real-tdd/task.md`, then write the asking session's role (`ping` or
+`pong`) to `.real-tdd/baton`.
+
 ## Running the control
 
 Same task statement, one session, no skill, the instruction "implement

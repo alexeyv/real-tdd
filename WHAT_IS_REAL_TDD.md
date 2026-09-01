@@ -133,6 +133,39 @@ it because it is the only pairing form in which the test author provably
 does not know the implementation, which is the property the experiment
 needs.
 
+## Where TDD stops and asking begins
+
+Nothing in *TDD by Example* tells you what to do when you do not know
+what the behavior should be. The book assumes you do: the test list is
+made of behaviors you already want, and every pattern in Part III is
+about getting from a wanted behavior to working code in small steps. The
+one place Beck addresses not knowing is the test list itself, and what he
+puts there is a test you have not written yet, never a question.
+
+The reason is that in Beck's setting the question has somewhere else to
+go. *Extreme Programming Explained* (1999) makes it one of the twelve
+practices: someone who can answer "what should this do" sits with the
+programmers, full time, so that no programmer ever has to guess. *Planning
+Extreme Programming* (Beck and Fowler, 2000) draws the line the skill
+needs: what the software should do is a business decision and belongs to
+the customer; how to build it is a technical decision and belongs to the
+programmers. A programmer who picks between two readings of a requirement
+has made a business decision, and in Beck's process that is a category
+error, not initiative.
+
+TDD is the programmer's side of that line. The tests are how programmers
+make technical decisions one at a time. When a test would have to settle
+what the software is for, it has crossed the line, and the right move is
+not a cleverer test but a question.
+
+Two runs of this skill showed why the rule has to be written down. In the
+first, a session resolved an ambiguous clause in its test list, the
+partner implemented it, and the choice was never surfaced. In the second,
+both sessions noticed ambiguities, wrote them in the journal, and then
+resolved them anyway, because the protocol gave them no other move. The
+`human` baton is that move. It is not part of TDD; it is what TDD assumed
+was in the room.
+
 ## What the skill invents
 
 Beck's pairs share a keyboard and a room. Two sessions share a working
@@ -143,7 +176,9 @@ tree and nothing else, so the skill adds:
 - a rule that the journal may not instruct, so that the journal cannot
   become the plan the technique is supposed to make unnecessary;
 - a three-attempt limit before reverting, standing in for Beck's "get to
-  green quickly", which for a human is measured in minutes.
+  green quickly", which for a human is measured in minutes;
+- a `human` baton value, standing in for the person Beck's process keeps
+  in the room to answer what the software should do.
 
 None of these change the technique. They replace what a shared room
 provided for free.

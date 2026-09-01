@@ -1,7 +1,7 @@
 # The turn
 
 Shared by both roles. "You" is whichever role is reading; "your partner"
-is the other. The baton names roles as `ping` and `pong`.
+is the other. The baton reads `ping`, `pong`, `human`, or `done`.
 
 ## Steps
 
@@ -25,6 +25,8 @@ is the other. The baton names roles as `ping` and `pong`.
    - If the test asserts something that contradicts `.real-tdd/task.md`,
      name the task line in the journal, hand the baton back without a
      green, and go to step 1.
+   - If the test decides something the task does not settle, ask the
+     human (step 7) instead of passing it.
    - If the failing test is one you wrote and your partner handed it
      back, skip to step 5 and split it (Child Test), rewrite it, or
      withdraw it and pick another item.
@@ -57,15 +59,24 @@ is the other. The baton names roles as `ping` and `pong`.
       another item, or the code does more than its tests say. Check which;
       a passing new test has found a bug this way.
    5. Touch no production code. Not a stub, not a signature.
-   6. Assert observable behavior in the problem's words, not an
+   6. If writing the test means choosing between readings of the task,
+      ask the human (step 7) instead.
+   7. Assert observable behavior in the problem's words, not an
       implementation you have in mind.
-   7. Check off the item. Add anything you discovered.
+   8. Check off the item. Add anything you discovered.
 
    If the list is empty, write `done` to the baton, make the final journal
    entry, and stop. The human decides whether the list was finished.
 
 6. **Hand off.** Append the journal entry in the format below, then write
    your partner's role to `.real-tdd/baton`. In that order. Go to step 1.
+
+7. **Ask the human.** When the task is silent, ambiguous, or contradicts
+   itself on the behavior in front of you, do not settle it in a test or
+   in code. Write the question in the journal under **Question:**, write
+   `human` to `.real-tdd/baton`, and go to step 1. The human answers by
+   appending to `.real-tdd/task.md` and writing your role back to the
+   baton.
 
 ## Rules that hold throughout
 
@@ -95,6 +106,7 @@ Take the timestamp from `date -u`; do not write it from memory.
 **Interface decided:** <any signature, type, or name this test fixed, or "none">
 **List:** <items checked, items added>
 **Surprise:** <what the test or the code taught you, or "none">
+**Question:** <for the human, only when the baton goes to `human`>
 ```
 
 The Surprise line is the point. Write "none" when there was none.
