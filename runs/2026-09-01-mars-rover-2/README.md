@@ -67,6 +67,25 @@ full: `/real-tdd ping` and `/real-tdd pong`, with the task pre-written to
   method being honest about what the tests demanded or the method missing
   what a designer would see on day one.
 
+## Tokens
+
+Same method as run 1 (`tools/session_tokens.py`).
+
+| Session | API calls | Cache writes | Cache reads | Output |
+|---|---:|---:|---:|---:|
+| ping | 111 | 136,563 | 10,528,138 | 80,030 |
+| pong | 112 | 134,858 | 9,204,544 | 56,169 |
+| **total** | 223 | 271,421 | 19,732,682 | 136,199 |
+| run 1 ping-pong | 165 | 311,695 | 11,542,804 | 92,639 |
+| run 1 control | 137 | 593,707 | 11,054,047 | 93,266 |
+
+Run 2 was three times faster than run 1 and cost half again as much: more
+turns, more calls per turn, and a context that grew with the journal and
+was re-read on every call. Ping, which starts the run and writes the
+list, reads and writes more than pong in both runs. Against the control,
+ping-pong on the revised skill reads 1.8 times the cache and produces 1.5
+times the output for a fifth of the production code.
+
 ## Reading
 
 Half the wall time of run 1 for a comparable result, with no

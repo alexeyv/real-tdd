@@ -66,6 +66,28 @@ human asked to approve two other interpretive calls but not this one.
   that such a test is not a step made the coder discard it and write the
   test the bug was hiding behind.
 
+## Tokens
+
+From the Claude Code session logs, summed with `tools/session_tokens.py`.
+Uncached input is a few tokens per call and is omitted. Output includes
+thinking.
+
+| Session | API calls | Cache writes | Cache reads | Output |
+|---|---:|---:|---:|---:|
+| ping | 81 | 146,618 | 5,884,573 | 51,989 |
+| pong | 84 | 165,077 | 5,658,231 | 40,650 |
+| **ping-pong total** | 165 | 311,695 | 11,542,804 | 92,639 |
+| control, main session | 70 | 185,842 | 7,878,367 | 77,611 |
+| control, implementer subagent | 41 | 118,019 | 2,129,201 | 13,977 |
+| control, three reviewer subagents | 26 | 289,846 | 1,046,479 | 1,678 |
+| **control total** | 137 | 593,707 | 11,054,047 | 93,266 |
+
+The control's main session includes the project-context setup before
+the build. The two arms cost the same in output and in cache reads; the
+control writes twice as much cache because each subagent starts cold.
+Both ping-pong sessions spent some early calls on a different model
+before being switched to Opus 5 high.
+
 ## Reading
 
 Ping-pong produced a script; bmad-build produced a set of half-decent

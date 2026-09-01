@@ -90,6 +90,8 @@ judge of the first item.
   one meaning for both sessions.
 - `WHAT_IS_REAL_TDD.md`: what Beck wrote, with sources, so the skill can
   be checked against the technique it claims to run.
+- `tools/session_tokens.py`: sums token usage from the Claude Code session
+  logs of a run.
 - `runs/`: one directory per run, with the ping-pong artifacts, the
   control, and a comparison.
 
