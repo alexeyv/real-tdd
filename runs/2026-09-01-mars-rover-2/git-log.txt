@@ -1,0 +1,32 @@
+3c080ce docs: final journal entry for the run
+d6641da test: pin the last five Twist 2 behaviours
+e8c717b feat: a refused command string reports the obstacle it would have hit
+d0f8810 feat: a command string that would hit a known obstacle is refused
+871b670 test: pin the discovery order a list gave us for free
+38394b3 feat: an obstacle bumped into twice is recorded once
+cc6f11c feat: the rover remembers the obstacle it bumped into
+72d1189 feat: a rover starts out having discovered no obstacles
+a7e71e1 feat: the south pole crosses the same way the north one does
+4885cea feat: crossing the north pole leaves the rover heading south
+886956c feat: crossing the north pole lands on the far side of the planet
+88ac39f feat: moving north off the north pole row stays on that row
+ed926fb feat: each command string starts with a clean obstacle report
+18cac75 feat: a rover that has not been blocked reports no obstacle
+dcaab4c feat: the rover reports which obstacle blocked it
+41cfc97 feat: a blocked move abandons the rest of the command string
+8a9b126 feat: a move onto an obstacle leaves the rover where it was
+0e8022e test: pin the westward wrap that modulo gave us for free
+fcfe970 feat: F moves west when the rover faces west
+045ba73 feat: B moves one square against the heading
+7230636 feat: R turns to the heading right of the current one
+f140775 feat: longitude wraps at the edge of the map
+8b4a106 feat: L turns through the whole compass
+baef79a feat: R turns the rover right without moving it
+519d9fb feat: F moves along longitude when the rover faces east
+bc5e030 feat: L turns to the heading left of the current one
+0f17c5a feat: L turns the rover left without moving it
+a65ab49 feat: F moves along latitude in the direction the rover faces
+1d12d7b feat: F moves the rover one square north
+7594d0e feat: a rover reports the position and heading it was created with
+bb4d514 chore: make a test file executable and write the test list
+0ba9f2f chore: set up second real-tdd run for Mars Rover

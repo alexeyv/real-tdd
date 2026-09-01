@@ -95,9 +95,10 @@ judge of the first item.
 
 ## Status
 
-One run: `runs/2026-09-01-mars-rover/`. The skill was revised after it to
-fix the failure modes that run exposed; the run was made with the earlier
-text, which is in git history at tag `run-1`.
+Two runs. `runs/2026-09-01-mars-rover/` is the first, with a bmad-build
+control, made with the skill text at tag `run-1`. `runs/2026-09-01-mars-
+rover-2/` reran the same task on the revised skill and carries the text it
+used in `skill-as-run/`.
 
 ## License
 
