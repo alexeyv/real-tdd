@@ -80,6 +80,7 @@ judge of the first item.
 
 - `skills/real-tdd/SKILL.md`: routes each session to its role.
 - `skills/real-tdd/references/ping.md`, `pong.md`: the two role prompts.
+- `skills/real-tdd/references/turn.md`: the loop both roles run.
 - `skills/real-tdd/references/glossary.md`: the terms the protocol uses,
   one meaning for both sessions.
 - `skills/real-tdd/references/beck.md`: what Beck wrote, with sources, so
