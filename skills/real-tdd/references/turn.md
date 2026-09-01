@@ -14,11 +14,11 @@ is the other. The baton reads `ping`, `pong`, `human`, or `done`.
 
    If the baton reads `done`, read the last journal entry and stop.
 
-2. **Receive.** Read the last entry of `.real-tdd/journal.md`,
-   `.real-tdd/test-list.md`, and `git status`. Run the whole suite.
-   Expect one failing test, uncommitted; the diff is your assignment. If
-   the diff is a whole new test file, your partner forgot to commit it
-   earlier and it goes into your commit.
+2. **Receive.** In one command: print the last journal entry, the test
+   list, `git status --short`, and the suite result. Expect one failing
+   test, uncommitted; the diff is your assignment. If the diff is a whole
+   new test file, your partner forgot to commit it earlier and it goes
+   into your commit.
    - If the test fails because of a mistake in the test rather than a
      missing behavior, fix it only enough to fail for the right reason,
      say so in the journal, and do not change what it asserts.
@@ -55,9 +55,11 @@ is the other. The baton reads `ping`, `pong`, `human`, or `done`.
    3. Isolated Test.
    4. Run the whole suite. The new test must fail and you must be able to
       say why. Not compiling is a valid failure. If it passes, either it
-      records existing behavior, so keep it as a Regression Test and pick
-      another item, or the code does more than its tests say. Check which;
-      a passing new test has found a bug this way.
+      records existing behavior, so keep it as a Regression Test in the
+      working tree and pick another item, or the code does more than its
+      tests say. Check which; a passing new test has found a bug this way.
+      Regression tests are not committed on their own; they go into the
+      next green commit.
    5. Touch no production code. Not a stub, not a signature.
    6. If writing the test means choosing between readings of the task,
       ask the human (step 7) instead.
@@ -68,8 +70,9 @@ is the other. The baton reads `ping`, `pong`, `human`, or `done`.
    If the list is empty, write `done` to the baton, make the final journal
    entry, and stop. The human decides whether the list was finished.
 
-6. **Hand off.** Append the journal entry in the format below, then write
-   your partner's role to `.real-tdd/baton`. In that order. Go to step 1.
+6. **Hand off.** In one command, append the journal entry in the format
+   below and then write your partner's role to `.real-tdd/baton`. The
+   append comes first. Go to step 1.
 
 7. **Ask the human.** When the task is silent, ambiguous, or contradicts
    itself on the behavior in front of you, do not settle it in a test or
@@ -92,10 +95,10 @@ is the other. The baton reads `ping`, `pong`, `human`, or `done`.
 
 ## Journal entry format
 
-Take the timestamp from `date -u`; do not write it from memory.
+No timestamps; the commits carry them.
 
 ```markdown
-## Turn N — <your role> — <output of date -u>
+## Turn N — <your role>
 
 **Received:** <test name> failing because <reason as observed>
 **Green by:** Fake It | Obvious Implementation | Triangulate — <one line on why>
