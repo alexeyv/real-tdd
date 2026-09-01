@@ -143,3 +143,13 @@ recorded verbatim.
 `pingpong/`: task, final test list, journal, final code and tests, git
 log. `control/`: task, AGENTS.md, the frozen spec with its review triage
 log, deferred work, final code and tests, git log.
+
+Each directory also has `repo.bundle`, the complete git history of that
+run. Restore it with:
+
+```
+git clone pingpong/repo.bundle mars-rover-pingpong
+```
+
+The ping-pong history has one commit per green, so `git log -p` there is
+the step-by-step record the journal describes.
