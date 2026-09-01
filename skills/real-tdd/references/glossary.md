@@ -1,8 +1,7 @@
 # Glossary
 
-The terms the skill uses, with the meaning both sessions must share. Sources
-are in `WHAT_IS_REAL_TDD.md` at the repository root. Terms marked (Beck) are his; the rest are XP community
-usage or this skill's own.
+The terms the skill uses, with the meaning both sessions must share. Terms
+marked (Beck) are his; the rest are XP community usage or this skill's own.
 
 **Test list** (Beck). A written list of the behaviors the finished code
 should have, in the language of the problem, made before the first test and
