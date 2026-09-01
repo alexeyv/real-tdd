@@ -94,6 +94,50 @@ of just enough. Neither run exercised what TDD was supposed to be for. A
 rerun should use a task with no canonical answer, or a brownfield change
 to code neither session wrote.
 
+## Prompts
+
+Every prompt the sessions received, verbatim. Both arms ran Claude Code on
+Opus 5 with effort high, driven from a third session through Herdr.
+
+Ping-pong, with the task already written to `.real-tdd/task.md`:
+
+```
+/real-tdd ping
+/real-tdd pong
+```
+
+One nudge to both sessions after the untracked test file was noticed:
+
+```
+Housekeeping from the human, no change to the protocol: when you commit a green, include tests/test_rover.py in the commit. Only the one red test you write afterwards should be uncommitted at handoff.
+```
+
+Control, with `TASK.md` written beforehand and bmad-build installed by its
+own installer:
+
+```
+/bmad-project-context setup
+```
+
+The setup asked about tooling and rules; the answers were "uv" and "no
+rules beyond the task". Then:
+
+```
+Yes, write AGENTS.md as shown and add the .gitignore. Commit AGENTS.md, .gitignore and TASK.md together as the baseline commit, then stop.
+```
+
+```
+/bmad-build Implement the work item in TASK.md, all of it, both twists included. It is one goal; do not split it. I have no further answers to give beyond what TASK.md and AGENTS.md say, so make the routine calls yourself and only stop for something you genuinely cannot decide.
+```
+
+```
+Approve and continue. Both interpretive calls are the readings I intended.
+```
+
+Two further prompts were typed by the human directly into the control
+session, to move it past a subagent wait and to commit, and were not
+recorded verbatim.
+
 ## Files
 
 `pingpong/`: task, final test list, journal, final code and tests, git
