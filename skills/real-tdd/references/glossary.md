@@ -1,7 +1,7 @@
 # Glossary
 
 The terms the skill uses, with the meaning both sessions must share. Sources
-are in `beck.md`. Terms marked (Beck) are his; the rest are XP community
+are in `WHAT_IS_REAL_TDD.md` at the repository root. Terms marked (Beck) are his; the rest are XP community
 usage or this skill's own.
 
 **Test list** (Beck). A written list of the behaviors the finished code

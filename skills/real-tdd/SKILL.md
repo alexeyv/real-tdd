@@ -9,7 +9,7 @@ An experiment, not a recommendation. Beck's TDD depends on the test's
 author not yet knowing the implementation. One model context cannot
 provide that; two can. So the technique runs across two sessions that
 share a working tree and nothing else, and the journal they keep is the
-data. Sources are in `references/beck.md`.
+data. Sources are in `WHAT_IS_REAL_TDD.md` at the repository root.
 
 ```
 /real-tdd ping <task statement>     # first session, starts the run

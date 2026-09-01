@@ -83,8 +83,8 @@ judge of the first item.
 - `skills/real-tdd/references/turn.md`: the loop both roles run.
 - `skills/real-tdd/references/glossary.md`: the terms the protocol uses,
   one meaning for both sessions.
-- `skills/real-tdd/references/beck.md`: what Beck wrote, with sources, so
-  the skill can be checked against the technique it claims to run.
+- `WHAT_IS_REAL_TDD.md`: what Beck wrote, with sources, so the skill can
+  be checked against the technique it claims to run.
 - `runs/`: one directory per run, with the ping-pong artifacts, the
   control, and a comparison.
 
