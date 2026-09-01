@@ -79,19 +79,18 @@ Same method as run 1 (`tools/session_tokens.py`).
 | run 1 ping-pong | 165 | 311,695 | 11,542,804 | 92,639 |
 | run 1 control | 137 | 593,707 | 11,054,047 | 93,266 |
 
-Run 2 was three times faster than run 1 and cost half again as much: more
-turns, more calls per turn, and a context that grew with the journal and
-was re-read on every call. Ping, which starts the run and writes the
+Run 2 cost half again as much as run 1: more turns, more calls per turn,
+and a context that grew with the journal and was re-read on every call. Ping, which starts the run and writes the
 list, reads and writes more than pong in both runs. Against the control,
 ping-pong on the revised skill reads 1.8 times the cache and produces 1.5
 times the output for a fifth of the production code.
 
 ## Reading
 
-Half the wall time of run 1 for a comparable result, with no
-intervention. The speed-up is not the mitigations; it is that the first
-run was started on a different model and switched mid-run, and this one
-was not. Same code shape as run 1: one class, tuples, strings, a compass
+A third of the wall time of run 1 for a comparable result, with no
+intervention, and half again the tokens. The journals do not say where
+run 1's extra hour went; the turn count and the work per turn are
+similar. Same code shape as run 1: one class, tuples, strings, a compass
 table. The design is the one the starter test fixed at turn 1, and the
 journal is again about the list and the protocol rather than about the
 code wanting a different shape. The kata caveat from the first run's

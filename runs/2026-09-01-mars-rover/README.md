@@ -85,8 +85,8 @@ thinking.
 The control's main session includes the project-context setup before
 the build. The two arms cost the same in output and in cache reads; the
 control writes twice as much cache because each subagent starts cold.
-Both ping-pong sessions spent some early calls on a different model
-before being switched to Opus 5 high.
+Both ping-pong sessions spent their first few calls on a different model
+before being switched to Opus 5 high, early enough not to matter.
 
 ## Reading
 
