@@ -1,0 +1,25 @@
+d0d299c chore(tdd): close the run
+69a4aeb feat(rover): report no obstacle before the first command string
+78e82c3 feat(rover): report the known obstacle that got a command string refused
+dad45bd feat(rover): refuse a command string that would hit a known obstacle
+6b0ede4 feat(rover): record an obstacle only the first time it is bumped
+1a44d52 feat(rover): learn an obstacle by bumping into it
+6566aee feat(rover): start with an empty map of discovered obstacles
+c264799 fix(rover): keep the heading when an obstacle stops a pole crossing
+396cdff feat(rover): report no obstacle after a command string that hits nothing
+a3a2987 feat(rover): report which obstacle stopped the run
+ac550ed feat(rover): abandon the command string at an obstacle
+3c842b9 feat(rover): refuse a move onto an obstacle
+1dbbb6c feat(rover): cross the south pole as well as the north
+2a757be feat(rover): cross the north pole instead of walking off the map
+0d3c39f feat(rover): move forward while heading west
+ed10049 feat(rover): move forward while heading south
+fd2864c feat(rover): move backward on B
+1222798 feat(rover): wrap longitude at the edges of the map
+618cfa1 feat(rover): turn right on R, turning as a step around the heading cycle
+5c85fef feat(rover): turn left on L
+3cdf2cd feat(rover): move forward in the direction the rover is facing
+89cb8d1 feat(rover): execute a command string, moving forward on F
+bd63320 feat(rover): report the position and heading given at creation
+1995685 chore(tdd): scaffold the run so a test file can execute
+efe7a27 chore: set up third real-tdd run for Mars Rover

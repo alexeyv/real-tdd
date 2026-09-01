@@ -97,10 +97,11 @@ judge of the first item.
 
 ## Status
 
-Two runs. `runs/2026-09-01-mars-rover/` is the first, with a bmad-build
-control, made with the skill text at tag `run-1`. `runs/2026-09-01-mars-
-rover-2/` reran the same task on the revised skill and carries the text it
-used in `skill-as-run/`.
+Three runs of the same Mars Rover task, all in `runs/`. The first has a
+bmad-build control and used the skill text at tag `run-1`. The second and
+third ran on successive revisions of the skill and carry the exact text
+they used in `skill-as-run/`. Each run directory has a README with the
+numbers, the token usage, and what the run showed.
 
 ## License
 

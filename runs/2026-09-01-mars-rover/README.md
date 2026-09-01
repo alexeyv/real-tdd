@@ -72,15 +72,15 @@ From the Claude Code session logs, summed with `tools/session_tokens.py`.
 Uncached input is a few tokens per call and is omitted. Output includes
 thinking.
 
-| Session | API calls | Cache writes | Cache reads | Output |
-|---|---:|---:|---:|---:|
-| ping | 81 | 146,618 | 5,884,573 | 51,989 |
-| pong | 84 | 165,077 | 5,658,231 | 40,650 |
-| **ping-pong total** | 165 | 311,695 | 11,542,804 | 92,639 |
-| control, main session | 70 | 185,842 | 7,878,367 | 77,611 |
-| control, implementer subagent | 41 | 118,019 | 2,129,201 | 13,977 |
-| control, three reviewer subagents | 26 | 289,846 | 1,046,479 | 1,678 |
-| **control total** | 137 | 593,707 | 11,054,047 | 93,266 |
+| Session | Output | API calls | Cache writes | Cache reads |
+| --- | ---: | ---: | ---: | ---: |
+| ping | 51,989 | 81 | 146,618 | 5,884,573 |
+| pong | 40,650 | 84 | 165,077 | 5,658,231 |
+| **ping-pong total** | 92,639 | 165 | 311,695 | 11,542,804 |
+| control, main session | 77,611 | 70 | 185,842 | 7,878,367 |
+| control, implementer subagent | 13,977 | 41 | 118,019 | 2,129,201 |
+| control, three reviewer subagents | 1,678 | 26 | 289,846 | 1,046,479 |
+| **control total** | 93,266 | 137 | 593,707 | 11,054,047 |
 
 The control's main session includes the project-context setup before
 the build. The two arms cost the same in output and in cache reads; the

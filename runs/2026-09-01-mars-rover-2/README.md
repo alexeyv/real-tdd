@@ -71,13 +71,13 @@ full: `/real-tdd ping` and `/real-tdd pong`, with the task pre-written to
 
 Same method as run 1 (`tools/session_tokens.py`).
 
-| Session | API calls | Cache writes | Cache reads | Output |
-|---|---:|---:|---:|---:|
-| ping | 111 | 136,563 | 10,528,138 | 80,030 |
-| pong | 112 | 134,858 | 9,204,544 | 56,169 |
-| **total** | 223 | 271,421 | 19,732,682 | 136,199 |
-| run 1 ping-pong | 165 | 311,695 | 11,542,804 | 92,639 |
-| run 1 control | 137 | 593,707 | 11,054,047 | 93,266 |
+| Session | Output | API calls | Cache writes | Cache reads |
+| --- | ---: | ---: | ---: | ---: |
+| ping | 80,030 | 111 | 136,563 | 10,528,138 |
+| pong | 56,169 | 112 | 134,858 | 9,204,544 |
+| **total** | 136,199 | 223 | 271,421 | 19,732,682 |
+| run 1 ping-pong | 92,639 | 165 | 311,695 | 11,542,804 |
+| run 1 control | 93,266 | 137 | 593,707 | 11,054,047 |
 
 Run 2 cost half again as much as run 1: more turns, more calls per turn,
 and a context that grew with the journal and was re-read on every call. Ping, which starts the run and writes the
