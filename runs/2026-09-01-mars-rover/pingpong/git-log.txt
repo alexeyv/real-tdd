@@ -1,0 +1,28 @@
+86259a1 chore: set up real-tdd run for Mars Rover with pole and memory twists
+1838ae5 chore: add pytest scaffold and test list for the real-tdd run
+d5c8cf9 feat: rover reports the position and heading it was created with
+a50e165 feat: turning left from north heads west
+45e1cde feat: turn left by stepping back around the compass
+0688493 feat: turn right as well as left
+1c447dd feat: forward moves the rover one square north
+77240ce feat: forward moves along the heading
+805adcd feat: run each command in a command string in order
+c5922e8 feat: backward moves opposite the heading
+d22c309 feat: longitude wraps around the planet
+606f08d feat: moving north off the pole row crosses the pole
+90a771a feat: forward heading south decreases latitude
+6a6c291 feat: crossing works at both poles
+48722d6 feat: forward heading west decreases longitude
+0c69608 feat: an obstacle stops the rover moving onto it
+3cefdce feat: rover reports the obstacle it stopped at
+8410f78 feat: a bump abandons the rest of the command string
+2fe4701 feat: a rover that has hit nothing reports no obstacle
+193c46f feat: a new rover has discovered no obstacles
+40e7bcf feat: bumping an obstacle discovers it
+7841b0f feat: bumping the same obstacle twice discovers it once
+393fa23 feat: refuse a command string that would hit a known obstacle
+1f827fc fix: a command string does not report an earlier string's bump
+7f70da6 feat: a refused command string reports the known obstacle in the way
+75ee3d8 feat: an unknown obstacle in the way is bumped, not refused
+fa4e002 test: pin down the behaviour the list still had open
+88e3dcc chore: close the real-tdd run
