@@ -66,6 +66,34 @@ human asked to approve two other interpretive calls but not this one.
   that such a test is not a step made the coder discard it and write the
   test the bug was hiding behind.
 
+## Reading
+
+Ping-pong produced a script; bmad-build produced a set of half-decent
+domain types. That is the whole line-count difference. For a kata that
+starts from nothing and ends in a hundred lines, the outcome is what you
+would expect: ping-pong spends a hundred minutes of wall-to-wall reasoning
+on a very lean working solution, bmad-build spends a quarter of the time on
+a bulkier but far more future-proof codebase. On a well-known kata, of
+which Opus has seen every flavor of solution in training.
+
+Two caveats on top of that.
+
+The lean solution is a property of the test list, not of TDD. No report
+type, no outcome enum, no heading type, because no item on the list asked
+for one. The list was written by one session at turn one, in a few
+minutes, from the same task text bmad-build turned into a 23-row triage
+log. The hundred minutes then went into confirming, one assertion at a
+time, a design the first turn had already fixed. Every Surprise line in
+the journal is about the list or the protocol, not about the code wanting
+a different shape.
+
+The kata caveat cuts against both runs equally. Both sessions were
+retrieving a design, not discovering one. The control's domain types are
+no more evidence of future-proofing than the ping-pong script is evidence
+of just enough. Neither run exercised what TDD was supposed to be for. A
+rerun should use a task with no canonical answer, or a brownfield change
+to code neither session wrote.
+
 ## Files
 
 `pingpong/`: task, final test list, journal, final code and tests, git
