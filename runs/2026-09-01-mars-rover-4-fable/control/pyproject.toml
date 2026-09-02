@@ -1,0 +1,16 @@
+[project]
+name = "mars-rover"
+version = "0.1.0"
+description = "Mars rover kata: spherical grid with pole crossing, and a rover that learns obstacles by bumping into them."
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

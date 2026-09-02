@@ -1,0 +1,2 @@
+f4846da feat(rover): implement Mars rover with pole crossing and obstacle learning
+16c205c chore: add baseline task spec, agent instructions, and gitignore

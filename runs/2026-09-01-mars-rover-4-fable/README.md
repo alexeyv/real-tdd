@@ -84,6 +84,45 @@ one.
 - **The list was shorter**, 23 items against 30 to 36, and split as it
   went rather than written in full at the start.
 
+## Control: bmad-build on Fable 5.1 medium
+
+Same TASK.md as the first control, bmad-build installed by its own
+installer, one session on Fable 5.1 at medium effort. Setup answers as
+before: uv, any Python, no rules beyond the spec, no outside standards.
+Build prompt verbatim from the first control. Artifacts in `control/`.
+
+| | Control 1, Opus high | Control 2, Fable medium | Run 4 ping-pong, Fable medium |
+|---|---:|---:|---:|
+| Output tokens | 93,266 | 36,577 | 66,254 |
+| API calls | 137 | 35 | 98 |
+| Wall time, build only | 25 min | 7 min | 15 min |
+| Production lines | 267 | 205 | 55 |
+| Classes | 6 | 3 | 1 |
+| Tests (functions / cases) | 73 | 41 / 69 | 35 |
+| Review layers run | 3 | 1 | |
+| Human interventions | 5 | 1 | 2 |
+
+Control 2 took bmad-build's in-session route: no implementer subagent,
+the main session wrote the spec and the code itself, and only the Blind
+Hunter layer ran. It never stopped for spec approval, which the prompt
+had told it not to do. The one intervention was the same one the first
+control needed: the reviewer's report came back truncated and the
+session waited for a remainder that does not exist.
+
+The shape is the first control's shape at three quarters the size:
+Planet, Rover, Report, seven validation sites, case-insensitive
+commands, a review triage log with eighteen findings of which ten were
+patched and six rejected with reasons. The known-obstacle pre-check uses
+the rover's own map, recorded in the frozen Intent as the main
+delegated decision. Same reading as every ping-pong run.
+
+Against the ping-pong run on the same model: bmad-build produced four
+times the code in half the tokens and half the time. The code it
+produced is the code a spec author writes when told to make the calls
+alone. The ping-pong code is the code the task's sentences demand and
+nothing else. That is the same result as the Opus pair, at half scale
+on both sides.
+
 ## Reading
 
 The lean result is the same. On this kata a medium-effort model reaches
@@ -97,4 +136,6 @@ is the product or the code is.
 
 Task with the human's clarification appended, final list, journal,
 final code and tests, git log, and `repo.bundle` with full history. The
-skill text is identical to run 3's `skill-as-run/`.
+skill text is identical to run 3's `skill-as-run/`. `control/` holds
+the bmad-build run: task, AGENTS.md, pyproject, the spec with its
+triage log, deferred work, code, tests, git log, and bundle.
