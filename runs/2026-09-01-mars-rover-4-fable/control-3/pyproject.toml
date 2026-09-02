@@ -1,0 +1,13 @@
+[project]
+name = "mars-rover"
+version = "0.1.0"
+description = "Mars rover kata with real poles and a learning obstacle map"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,3 @@
+3ed654e fix(rover): validate obstacles and start position, cover blocked headings
+8bb9751 feat(rover): implement mars rover with real poles and learned obstacles
+20b6926 chore: add task spec, agent instructions, and gitignore

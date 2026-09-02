@@ -142,6 +142,49 @@ alone. The ping-pong code is the code the task's sentences demand and
 nothing else. That is the same result as the Opus pair, at half scale
 on both sides.
 
+## Control 3: the fair test
+
+Control 2's prompt carried the sentence "only stop for something you
+genuinely cannot decide", and the session used it to pick the one-shot
+route. Control 3 is the same model, same skill, same setup answers, and a
+build prompt that is the skill plus the intent and nothing else:
+
+```
+/bmad-build Implement the work item in TASK.md, all of it, both twists included.
+```
+
+Artifacts in `control-3/`. The control 2 session is left running in its
+pane for interrogation.
+
+| | Control 2, "don't stop" | Control 3, intent only |
+|---|---:|---:|
+| Route | in-session | dispatch |
+| Human actions | 1 nudge past a truncated review | 1 spec approval |
+| Output tokens | 36,577 | 50,294 |
+| API calls | 35 | 73 |
+| Wall time, build only | 7 min | 10 min |
+| Production lines | 205 | 184 |
+| Classes | 3 | 6 |
+| Test cases | 69 | 49 |
+| Review layers run | 1 | 3 |
+| Review findings triaged | 18 | 32 |
+| Commits after baseline | 1 | 2 |
+
+Without the sentence, Fable chose dispatch, wrote a spec with a
+fifteen-row edge-case matrix and two design notes, and halted at
+Checkpoint 1. Both notes match the task and every earlier run: refusal
+from the rover's own map, and a blocked pole crossing leaves the heading
+alone. The human approved. An implementer subagent built it, all three
+review layers ran, and when the Blind Hunter report came back truncated
+the session re-requested the tail itself. Thirty-two findings were
+triaged and a second commit applied the patches. No nudge was needed.
+
+So the route decision in control 2 was the prompt's doing, and the
+behavior the skill specifies appears as soon as the prompt stops
+leaning on it. The cost of the full route on this model is a third more
+output tokens and three more minutes, for a spec the human saw before it
+was frozen and three reviews instead of one.
+
 ## Reading
 
 The lean result is the same. On this kata a medium-effort model reaches
@@ -155,6 +198,7 @@ is the product or the code is.
 
 Task with the human's clarification appended, final list, journal,
 final code and tests, git log, and `repo.bundle` with full history. The
-skill text is identical to run 3's `skill-as-run/`. `control/` holds
-the bmad-build run: task, AGENTS.md, pyproject, the spec with its
-triage log, deferred work, code, tests, git log, and bundle.
+skill text is identical to run 3's `skill-as-run/`. `control/` and
+`control-3/` hold the two bmad-build runs: task, AGENTS.md, pyproject,
+the spec with its triage log, deferred work, code, tests, git log, and
+bundle.
