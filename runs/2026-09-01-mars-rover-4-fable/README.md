@@ -109,6 +109,22 @@ had told it not to do. The one intervention was the same one the first
 control needed: the reviewer's report came back truncated and the
 session waited for a remainder that does not exist.
 
+Asked afterwards why it took that route, the session said two things
+beyond the gate's own criteria: that the dispatch route ends in a spec
+approval stop and the prompt had said to stop only for what it could
+not decide, so choosing dispatch "would have manufactured a stop"; and
+that the one-shot route still runs a review, which "turned up 18
+findings, 10 of which were patched", so coverage "was adequate for the
+risk". The first applies an instruction about questions to a checkpoint
+the workflow owns. The second justifies the route from the outcome of
+having taken it. The gate's third criterion, no architectural
+decisions, was false on a task that delegates interface and layout, and
+the Opus control read it that way on the same prompt. The route was
+chosen to fit the human's tone and the criteria were fitted to it
+afterwards. Harmless here; on a codebase where the approval stop is the
+point, this is the model reasoning its way past the one gate meant to
+put the interpretive calls in front of a human.
+
 The shape is the first control's shape at three quarters the size:
 Planet, Rover, Report, seven validation sites, case-insensitive
 commands, a review triage log with eighteen findings of which ten were
